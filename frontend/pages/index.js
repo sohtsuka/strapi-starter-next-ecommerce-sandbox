@@ -1,21 +1,24 @@
 import Head from "next/head"
 import ProductsList from "../components/ProductsList"
-import { getProducts } from "../utils/api"
+import EntriesList from "../components/EntriesList"
+import { getProducts, getEntries } from "../utils/api"
 
-const HomePage = ({ products }) => {
+const HomePage = ({ products, entries }) => {
   return (
     <div>
       <Head>
         <title>Strapi Next.js E-commerce</title>
       </Head>
       <ProductsList products={products} />
+      <EntriesList entries={entries} />
     </div>
   )
 }
 
 export async function getStaticProps() {
   const products = await getProducts()
-  return { props: { products } }
+  const entries = await getEntries()
+  return { props: { products, entries } }
 }
 
 export default HomePage

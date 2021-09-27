@@ -31,3 +31,13 @@ export async function getProduct(slug) {
   const products = await fetchAPI(`/products?slug=${slug}`);
   return products?.[0];
 }
+
+export async function getEntries() {
+  const entries = await fetchAPI("/entries");
+  return entries;
+}
+
+export async function getEntry(slug) {
+  const entries = await fetchAPI(`/entries?slug=${slug}`);
+  return entries?.[0];
+}
